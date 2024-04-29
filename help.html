@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LegumeLoc - Help</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="assets/css/style.css" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QWCEDDGJN3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QWCEDDGJN3');
+</script>
+
+<style>
+    .container {
+        max-width: 1800px;
+    }
+
+    p {
+    text-indent: 40px;
+    }
+</style>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-dark navbar-expand-lg bd-navbar">
+            <div class="container">
+                <a class="navbar-brand bd-brand" href="index.html">LegumeLoc</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link bd-link" aria-current="page" href="index.html"><i
+                            class="bi bi-info-square-fill mx-2"></i><span>Home</span>
+                        </a>
+                        <a class="nav-link bd-link" href="prediction.html"><i
+                            class="bi bi-terminal-fill mx-2"></i><span>Prediction</span>
+                        </a>
+                        <a class="nav-link bd-link" href="download.html"><i
+                            class="bi bi-cloud-arrow-down-fill mx-2"></i><span>Downloads</span>
+                        </a>
+                        <a class="nav-link bd-link active" href="help.html"><i
+                            class="bi bi-question-square-fill mx-2"></i><span>User guide</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-shrink-0">
+            <div class="container">
+                <h1 class="mt-4 mb-4 text-center">Help Page</h1>
+                <div class="row" style="margin-top: 5px;">
+                    <div class="col-md-2"></div>
+                    
+                    <div class="col-md-8" style="font-size: 18px;">
+                        <div class="card m-b-20 card-body" style="text-align: justify;">
+                            <div id="intro_loading"  style="margin-bottom: 10px;"></div>
+                            <h4><b class="text-muted2">Introduction</b></h4>
+                            <p>
+                                On this page, you will find a step-by-step guide to submit a query and obtain the result for protein localization 
+                                prediction. This page will also show the different options available for prediction and what each parameter means. 
+                                If you have any questions that are not covered on this page, please send an email to 
+                                <a href="mailto:rkaundal@usu.edu">bioinfo@kaabil.net</a>.
+                            </p>
+                            
+                            <hr>
+                            <h4><b class="text-muted2">Input Data</b></h4>
+                            <p>
+                                LegumeLoc server supports protein sequence(s) in FASTA format &mdash; you can either upload a FASTA file with protein 
+                                sequences, paste sequence(s) in the text area, or provide <a href="https://www.ncbi.nlm.nih.gov/">NCBI</a>/<a href="https://www.uniprot.org/">UniProt</a> 
+                                accession ID in the text box. A maximum of <b>10,000 sequences</b> can be analyzed on this server.
+                            </p>
+                            <img src='assets/images/input.png' width="750px" style="display: block; margin: 0 auto; border: 2px dotted rgb(165, 161, 161);">
+                            
+                            <hr>
+                            <h4><b class="text-muted2">Prediction Levels</b></h4>
+                            <p>
+                                LegumeLoc supports three levels for legume protien subcellular localization prediction. Users can select any level for 
+                                prediction and their preceeding levels will be automatically selected. For example, on selecting "Dual Localization 
+                                Classification" level, the levels before it will be automatically selected. By default, all the levels are selected, 
+                                which are explained below:
+                            </p>
+                            <p>
+                                <u>Level I</u>: In this level, a query sequence is predicted as 'single' or 'dual' localization protein.
+                            </p>
+                            <p>
+                                <u>Level II</u>: Selecting this level will first run <i>Level I</i>, followed by classifying the single localization proteins 
+                                into 11 single localization classes.
+                            </p>
+                            <p>
+                                <u>Level III</u>: This level will first execute <i>Level I</i> and <i>Level II</i>, followed by classifying dual localization 
+                                proteins into 14 classes.
+                            </p>
+                            <p>
+                                The available single or dual classes can be found in the information icon on the <a href="prediction.html">Prediction</a> page.
+                            </p>
+                            <img src='assets/images/prediction_options.png' width="800px" style="display: block; margin: 0 auto; border: 2px dotted rgb(141, 131, 131);">
+
+                            <hr>
+                            <h4><b class="text-muted2">Prediction Models</b></h4>
+                            <p>
+                                Two prediction strategies are available in LegumeLoc &mdash; <i>Fast</i> and <i>Sensitive</i> (as shown in the above figure). 
+                                On the <a href="prediction.html">Prediction</a> page, an information icon provides information about the models available.
+                            </p>
+                            <ol>
+                                <li>
+                                    <b>Fast</b>: This model provides a faster prediction by using DPCP protein feature. This approach is useful for annotationg 
+                                    a large number of proteins at once.
+                                </li>
+                                <li>
+                                    <b>Sensitive</b>: This model provides a more sensitive prediction at the cost of longer computation time. This approach 
+                                    employs TPC protein feature and is useful for the annotation of small number of proteins with high-quality prediction.
+                                </li>
+                            </ol>
+
+                            <hr>
+                            <h4><b class="text-muted2">Localization Prediction</b></h4>
+                            <p>
+                                An (optional) email address can be provided to receive a link to the results when the analysis is completed. The 
+                                <i><b>Run Prediction</b></i> button will execute the prediction on LegumeLoc server. The link to the results (available 
+                                on query submission) can also be copied or bookmarked for later use.
+                            </p>
+                            <img src='assets/images/email_run.png' width="800px" style="display: block; margin: 0 auto; border: 2px dotted rgb(165, 161, 161);">
+                            
+                            <hr>
+                            <h4><b class="text-muted2">Output Example</b></h4>
+                            <p>
+                                The result table will change based on the prediction level selected. As shown below, results an be viewed for Level 1, Level 2, 
+                                or Level 3. The selected level will be red in color. For each level, the <i><b>Download Results</b></i> button can be used to 
+                                download the comprehensive results table in tab-delimited format.
+                            </p>
+                            <img src='assets/images/results.png' width="900px" style="display: block; margin: 0 auto; border: 2px dotted rgb(165, 161, 161);">
+
+                            <hr>
+                            <h4><b class="text-muted2">Browser Compatibility</b></h4>
+                            <p>LegumeLoc has been tested in the following environments:</p>
+
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>OS</th>
+                                        <th>Version</th>
+                                        <th>Chrome</th>
+                                        <th>Firefox</th>
+                                        <th>Safari</th>
+                                        <th>Edge</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Linux</td>
+                                        <td>Ubuntu 22.04</td>
+                                        <td>108.0.5359.71</td>
+                                        <td>112.0.2</td>
+                                        <td>n/a</td>
+                                        <td>113.0.1774.35</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MacOS</td>
+                                        <td>Ventura 13.3.1 (a)</td>
+                                        <td>108.0.5359.71</td>
+                                        <td>112.0.2</td>
+                                        <td>16.4</td>
+                                        <td>113.0.1774.35</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Windows</td>
+                                        <td>10</td>
+                                        <td>108.0.5359.71</td>
+                                        <td>112.0.2</td>
+                                        <td>not tested</td>
+                                        <td>113.0.1774.35</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <footer class="footer  mt-5  mx-auto">
+        <div class="px-5">
+            <div class="line mt-2 mb-1"></div>
+        </div>
+        <div class="container d-flex flex-wrap py-1">
+            <p class="col-md-4 mb-0 text-copy" >&copy; 2024 </p>
+            <a href="https://kaabil.net" target="_blank" class="d-flex align-items-center mx-2 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+                <img src="./assets/images/lab_logo_red.png" style="height: 40px">
+            </a>
+            <a href="https://usu.edu" target="_blank" class="d-flex align-items-center mx-2 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+                <img src="./assets/images/usu_logo3.png" style="height: 40px;">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

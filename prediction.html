@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LegumeLoc - Prediction</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QWCEDDGJN3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QWCEDDGJN3');
+</script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-dark navbar-expand-lg bd-navbar">
+            <div class="container">
+                <a class="navbar-brand bd-brand" href="index.html">LegumeLoc</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link bd-link" aria-current="page" href="index.html"><i
+                            class="bi bi-info-square-fill mx-2"></i><span>Home</span>
+                        </a>
+                        <a class="nav-link bd-link active" href="prediction.html"><i
+                            class="bi bi-terminal-fill mx-2"></i><span>Prediction</span>
+                        </a>
+                        <a class="nav-link bd-link" href="download.html"><i
+                            class="bi bi-cloud-arrow-down-fill mx-2"></i><span>Downloads</span>
+                        </a>
+                        <a class="nav-link bd-link" href="help.html"><i
+                            class="bi bi-question-square-fill mx-2"></i><span>User guide</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id= "mainc" class="container pt-4 t-3 mx-auto ">
+        <h2 class="fw-bold mb-2 mt-1 text-center">Submission</h2>
+
+        <div class="px-5 my-3 mb-4">
+            <div class="line" style="width: 100%;"></div>
+        </div>
+
+        <form action="" method="POST" enctype="multipart/form-data">
+            <div class="row mb-2 justify-content-center">
+                <div class="col-md-8">
+                    <div class="row">
+                        <p style="font-size: 18px; text-align: justify; margin-bottom: 30px;">
+                            Enter NCBI/UniProt accession ID or paste/upload protein sequence(s) in FASTA format to predict the subcellular 
+                            localization. The prediction time depends on the model selected. A maximum of <b>10,000 protein sequences</b> are 
+                            allowed on this server.
+                        </p>
+
+                        <div class="col-sm-2">
+                            <h6 class="mb-2 mt-2 text-head">
+                                Accession ID:
+                            </h6>
+                        </div>
+                        
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-7">
+                                    <div class="form-check form-check-inline mt-2">
+                                        <input class="form-check-input" id="ncbiAccc" value="ncbi" name="accType"
+                                            checked="" type="radio"><label for="ncbiAccc"
+                                            class="form-check-label ptext px-2 ">NCBI</label>
+                                    </div>
+                                    <div class="form-check form-check-inline mt-2">
+                                        <input class="form-check-input" id="uniprotAcc" value="uniprot" name="accType"
+                                            type="radio"><label for="uniprotAcc"
+                                            class="form-check-label ptext px-2 ">UniProt</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <input class="form-control AtSubP2-form" placeholder="NP_001240185, Q6PSU2" name="accesion"
+                                        type="text" id="ncbiAcc">
+                                </div>                                
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 my-4 col-title2 mt-3 mb-3">
+                            OR
+                        </div>
+                        
+                        <div class="col-md-4 ptext text-head mt-1">
+                            Upload a FASTA file:
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group mb-2">
+                                <input class="AtSubP2-from form-control" placeholder="Upload file here">
+                                <input type="file" class="form-control-file real-input" name="fileSeq" id="fileSeq" />
+                                <label class="btn AtSubP2-btn-1" for="fileSeq">Choose file</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 my-4 col-title2 mt-3 mb-3">
+                            OR
+                        </div>
+                        
+                        <div class="col-md-6 ptext text-head mt-2">
+                            Paste FASTA sequence:
+                        </div>
+                        <div class="col-sm-6 mb-1">
+                            <button type="button" id="loadDemoData" class="AtSubP2-btn-1 btn btn-primary">Load example</button>
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <textarea class="AtSubP2-form form-control " id="textareaSeq" name="textareaSeq"
+                                placeholder=">A0A191UJB7
+MSHSVKIYDTCIGCTQCVRACPTDVLEMIPWDGCKAKQIASAPRTEDDFLSVRVYLWHETTRSMGLAY"
+                                rows="5"></textarea></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-9 px-5 mt-4">
+                    <div class="prediction-options-bar">
+                        <h5 class="fw-bold mb-3 text-center">Prediction Options</h5>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-head mb-2">
+                                <p class="text-muted2 ms-3"> Select prediction level <i class="ms-2 bi bi-info-circle"
+                                        data-bs-toggle="modal" data-bs-target="#predictionModal"></i></p>
+                            </h6>
+                            <div class="form-check mx-4">
+                                <input class="form-check-input mb-2 mx-2" id="phase1radio" value="Phase1" type="checkbox"
+                                    name="phase1radio">
+                                <label class="form-check-label ltext" for="phase1radio">
+                                    Single vs Dual Localization Classification
+                                </label>
+                            </div>
+                            <div class="form-check mx-4">
+                                <input class="form-check-input mb-2 mx-2" id="phase2radio" value="Phase2" type="checkbox"
+                                    name="phase2radio">
+                                <label class="form-check-label ltext" for="phase2radio">
+                                    Single Localization Classification
+                                </label>
+                            </div>
+                            <div class="form-check mx-4">
+                                <input class="form-check-input mb-2 mx-2" id="phase3radio" value="Phase3" type="checkbox"
+                                    name="phase3radio">
+                                <label class="form-check-label ltext" for="phase3radio">
+                                    Dual Localization Classification
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6 class="text-head mb-0">
+                                <p class="text-muted2 ms-3"> Select prediction model <i class="ms-2 bi bi-info-circle"
+                                        data-bs-toggle="modal" data-bs-target="#strategyModal"></i></p>
+                            </h6>
+                            <div class="row ms-5">
+                                <div class="form-check form-check-inline col-md-3">
+                                    <input class="form-check-input" id="fastRadio" value="fast" name="predMethod" checked="" type="radio"><label
+                                        for="fastRadio" class="form-check-label ptext px-2 ">Fast</label>
+                                </div>
+                                <div class="form-check form-check-inline col-md-3">
+                                    <input class="form-check-input" id="accurateRadio" value="sensitive" name="predMethod" type="radio"><label
+                                        for="accurateRadio" class="form-check-label ptext px-2 ">Sensitive</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="col-md-10 mt-4 mb-4 form-group">
+                        <h6 class="text-head mb-2">
+                            <p class="text-muted2 ms-3"> Email address (Optional) </p>
+                        </h6>
+                        <input name="emailAddress" placeholder="Enter a valid email" class="AtSubP2-form form-control mt-2"
+                            id="emailAddress" type="email" style="width: 70%; margin-left: 30px;">
+                    </div>
+                </div>
+
+                <div class="px-5 my-5 mt-2 mb-3">
+                    <div class="line " style="width: 100%;"></div>
+                </div>
+                
+                <div class="row mx-auto justify-content-center ">
+                    <div class="col-sm-4 mt-2 text-center">
+                        <button type="button" id="resetPrediction" class="AtSubP2-btn-2 btn btn-primary">Reset All</button>
+                    </div>
+    
+                    <div class="col-sm-4 mt-2 text-center">
+                        <button id= "runPrediction" type="button" class="AtSubP2-btn-1 btn btn-primary"> Run Prediction</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    
+            <div class="modal fade" id="predictionModal" tabindex="-1" role="dialog" aria-labelledby="predictionModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="predictionModalLabel">Prediction Levels</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">  
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p style="font-size: 15px;">
+                            <b>Level I</b>: The input protein sequence is predicted as single or dual localization class, based on the selected model.
+                        </p>
+                        <hr>
+                        <p style="font-size: 15px;">
+                            <b>Level II</b>: In this level, the query protein sequence predicted as single or dual localization is followed by the 
+                            prediction into 11 single localization classes as follows:
+                            <ul style="columns: 2;">
+                                <li style="font-size: 14px;">Vacuole</li>
+                                <li style="font-size: 14px;">Cytoplasm</li>
+                                <li style="font-size: 14px;">Peroxisome</li>
+                                <li style="font-size: 14px;">Golgi apparatus</li>
+                                <li style="font-size: 14px;">Endoplasmic Reticulum</li>
+                                <li style="font-size: 14px;">Membrane</li>
+                                <li style="font-size: 14px;">Secreted</li>
+                                <li style="font-size: 14px;">Cell membrane</li>
+                                <li style="font-size: 14px;">Mitochondria</li>
+                                <li style="font-size: 14px;">Plastid</li>
+                                <li style="font-size: 14px;">Nucleus</li>
+                            </ul>
+                        </p>
+                        <hr>
+                        <p style="font-size: 15px;">
+                            <b>Level III</b>: This level will classify the proteins into 14 dual localization classes, which are: 
+                            <ul style="columns: 2;">
+                                <li style="font-size: 14px;">CellMembrane & Membrane</li>
+                                <li style="font-size: 14px;">Cytoplasm & Membrane</li>
+                                <li style="font-size: 14px;">Cytoplasm & Mitochondria</li>
+                                <li style="font-size: 14px;">Cytoplasm & Nucleus</li>
+                                <li style="font-size: 14px;">Cytoplasm & Vesicle</li>
+                                <li style="font-size: 14px;">Endoplasmic Reticulum & Membrane</li>
+                                <li style="font-size: 14px;">Golgi apparatus & Membrane</li>
+                                <li style="font-size: 14px;">Membrane & Mitochondria</li>
+                                <li style="font-size: 14px;">Membrane & Nucleus</li>
+                                <li style="font-size: 14px;">Membrane & Plastid</li>
+                                <li style="font-size: 14px;">Membrane & Secreted</li>
+                                <li style="font-size: 14px;">Membrane & Vacuole</li>
+                                <li style="font-size: 14px;">Nucleus & Chromosome</li>
+                                <li style="font-size: 14px;">Plastid & Mitochondria</li>
+                            </ul>
+                        </p>                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="strategyModal" tabindex="-1" role="dialog" aria-labelledby="strategyModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title font-weight-bold" id="strategyModalLabel">Prediction Strategy</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size: 15px;">
+                                LegumeLoc provides two prediction strategies:
+                            </p>
+                            <ul>
+                                <li style="font-size: 14px;">
+                                    <b>Fast</b>: This model provides a faster prediction. This approach is useful in annotationg huge number of proteins.
+                                </li>
+                                <br>
+                                <li style="font-size: 14px;">
+                                    <b>Sensitive</b>: This model provides a more sensitive prediction at the cost of longer computation time. This approach is useful in annotationg small number of proteins with high-quality prediction.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal fade" id="errorModal" tabindex="-2" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="mod-header modal-header">
+                        <h5 class="modal-title" id="errorModalLabel">Error in Job Submission</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">  
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <p id="AtSubP2error">Error.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+        <div id="intermediate" class="container mt-5 d-none" >
+            <div class="row justify-content-center">
+                <code>
+                <div class="col-md-12">
+                    <h4 class="my-2 text-center">Your query has been successfully submitted at LegumeLoc.</h4>
+                    <br>
+                    <h4 class="my-2 text-center">Please be patient while your query is being processed <img src="assets/images/test.gif" height="20"></h4>
+                    <br>
+                    <h4 class="my-2 text-center">After successfull completion of the job, you will be redirected to the results page:
+                    </h4>
+                    <br>
+                    <br>
+                    <h4 class ="text-center" id="AtSubP2SubmittionScreen">You have successfully submitted a query to LegumeLoc.</h4>
+                </div>
+            </code>
+            </div>
+            <div class='row mt-5 justify-content-center'>
+                <div class="col-md-2">
+                    <a href="prediction.html" target="_blank" class="deepnec-btn-1 btn btn-primary" role="button">Submit another job</a> 
+                </div>
+            </div>
+        </div>
+
+    <footer class="footer  mt-5  mx-auto">
+        <div class="px-5">
+            <div class="line mt-2 mb-1"></div>
+        </div>
+        <div class="container d-flex flex-wrap py-1">
+            <p class="col-md-4 mb-0 text-copy" >&copy; 2024 </p>
+            <a href="https://kaabil.net" target="_blank" class="d-flex align-items-center mx-2 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+                <img src="./assets/images/lab_logo_red.png" style="height: 40px">
+            </a>
+            <a href="https://usu.edu" target="_blank" class="d-flex align-items-center mx-2 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+                <img src="./assets/images/usu_logo3.png" style="height: 40px;">
+            </a>
+        </div>
+    </footer>
+    <script src="assets/js/prediction.js"></script>
+
+</body>
+</html>
