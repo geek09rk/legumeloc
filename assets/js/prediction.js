@@ -47,6 +47,8 @@ function uncheckPhases() {
     document.getElementById("uniprotAcc").disabled = null;
     document.getElementById("ncbiAccc").checked = true;
     document.getElementById("uniprotAcc").checked = false;
+    document.getElementById("fileSeq").value = "";
+    document.getElementById("fileSeqDisplay").value = "";
     document.getElementById("fileSeq").disabled = null;
     document.getElementById("loadDemoData").disabled = null;
     document.getElementById("fastRadio").disabled = null;
@@ -67,7 +69,11 @@ function uncheckPhases() {
   $(document).ready(() => {
     resetAll();
     setPhase();
-   
+
+    document.getElementById("fileSeq").addEventListener("change", function () {
+      var display = document.getElementById("fileSeqDisplay");
+      display.value = this.files[0] ? this.files[0].name : "";
+    });
   });
 
   $("#runPrediction").click(function () {
